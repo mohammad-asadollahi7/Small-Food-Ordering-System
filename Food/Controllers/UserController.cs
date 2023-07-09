@@ -8,7 +8,7 @@ namespace FoodApi.Controllers;
 
 [ApiController]
 [Route("api/login/[controller]")]
-
+[EnableCors("mypolicy")]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -18,7 +18,7 @@ public class UserController : ControllerBase
         _userService = userService;
         _context = context;
     }
-    [EnableCors("mypolicy")]
+    
     [HttpPost]
     public IActionResult Login([FromForm] string username, [FromForm] string password)
     {

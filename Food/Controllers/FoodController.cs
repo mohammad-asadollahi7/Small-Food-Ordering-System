@@ -16,7 +16,7 @@ public class FoodController : ControllerBase
     {
         _foodService = foodService;
     }
-
+    [EnableCors("mypolicy")]
     [HttpGet]
     public IActionResult GetAll()
     {

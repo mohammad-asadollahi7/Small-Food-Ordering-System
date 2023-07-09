@@ -6,16 +6,22 @@
     <meta name="viewport" content="width: device-width, initial-scale=1" />
     <link rel="stylesheet" href="./css/stylesheet.css" />
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.css" />
-    <title>Login Section</title>
+    <title id="title">Login Section</title>
 </head>
 <body>
-    <div class="container mt-5 p-3 border border-1 rounded-1">
+    <div id="login" class="container mt-5 p-3 border border-1 rounded-1">
         <div class="form-group">
             <input id="username" class="form-control mb-2" type="text" placeholder="Username" />
             <input id="password" class="form-control mb-2" type="text" placeholder="Password" />
-            <input class="btn btn-success" type="submit" value="Login" onclick="Login()"/>
+            <input class="btn btn-success" type="submit" value="Login" onclick="Login()" />
         </div>
     </div>
+
+    <div id="container"></div>
+    <div class="container mt-5">
+        <div id="card" class="card-group gap-2"></div>
+    </div>
+
     <script src="./js/jquery/jquery.min.js"></script>
     <script src="./js/Script.js"></script>
 </body>
