@@ -11,11 +11,12 @@ function Login() {
                 "username": `${username}`,
                 "password": `${password}`
             },
-            dataType: 'json',
-            success: function (data) {
-                var food = document.getElementById("foods");
-                food.innerHTML = data;
+            success: function () {
+                 GetFoods();   
             },
-
         });
+}
+
+function GetFoods() {
+    /*window.location.replace("./Foods.html");*/
 }
