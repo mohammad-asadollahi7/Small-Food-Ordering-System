@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FoodApi.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class FoodController : ControllerBase
-    {
+namespace FoodApi.Controllers;
 
-    }
+[ApiController]
+[Route("api/[controller]")]
+public class FoodController : ControllerBase
+{
     
 }
