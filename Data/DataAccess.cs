@@ -10,6 +10,7 @@ namespace Data;
 public class DataAccess<T> where T : class
 {
     private string FilePath;
+    private List<T>? data;
     public DataAccess()
     {
          FilePath = GetJsonFilePath();
@@ -17,7 +18,7 @@ public class DataAccess<T> where T : class
     public List<T> GetAll()
     {
         var jsonString = File.ReadAllText(FilePath);
-        var data = JsonSerializer.Deserialize<List<T>>(jsonString);
+        data = JsonSerializer.Deserialize<List<T>>(jsonString);
         return data;
     }
 

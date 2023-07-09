@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository;
 using Repository.Services;
@@ -7,23 +8,29 @@ namespace FoodApi.Controllers;
 
 [ApiController]
 [Route("api/login/[controller]")]
+
 public class UserController : ControllerBase
 {
-    private IUserService _userService;
-
-    public UserController(IUserService userService)
+    private readonly IUserService _userService;
+    private readonly IHttpContextAccessor _context;
+    public UserController(IUserService userService, IHttpContextAccessor context)
     {
         _userService = userService;
+        _context = context;
     }
-
+    [EnableCors("mypolicy")]
     [HttpPost]
     public IActionResult Login([FromForm] string username, [FromForm] string password)
     {
         var isValid = _userService.IsValid(username, password);
         if (!isValid)
+            return NotFound();
+        
+        else
         {
-            return BadRequest();
+            _context.HttpContext.Session.SetString("username", username);
+            return Ok();
         }
-        return Ok();
+       
     }
 }

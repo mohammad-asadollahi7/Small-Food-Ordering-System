@@ -9,6 +9,22 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("mypolicy",
+        policy =>
+        {
+            policy.WithOrigins("*");
+        });
+});
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromSeconds(200);
+    opt.Cookie.HttpOnly = true;
+});
 builder.Services.AddScoped<IUserService, UserService>();    
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<DataAccess<User>>();
@@ -19,6 +35,8 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseSession();
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
