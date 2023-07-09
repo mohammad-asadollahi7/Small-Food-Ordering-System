@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository;
+namespace Repository.Services;
 
-public interface IUserRepository
+public interface IFoodService
 {
-    public User? GetByUsername(string username);
-
+    public List<Food> GetAll();
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "Name": "Pizza",
+    "Price": 100000,
+    "Description": "23 cm roast beef pizza, hot dog fries, 2 cans of Coca Cola",
+    "PhotoPath": "pizza.jpg"
+  },
+
+
+  {
+    "Id": 2,
+    "Name": "pasta",
+    "Price": 80000,
+    "Description": "400 grams of pasta, minced meat, soy, bell pepper, special sauce",
+    "PhotoPath": "pasta.jpg"
+  },
+
+  {
+    "Id": 3,
+    "Name": "Chicken",
+    "Price": 130000,
+    "Description": "One fried chicken thigh with special sauce, cinnamon, lavash bread",
+    "PhotoPath": "chicken.jpg"
+  },
+  {
+    "Id": 4,
+    "Name": "Sandwich",
+    "Price": 150000,
+    "Description": "One premium hot dog with 60% meat, pizza cheese, tomato, lettuce, pickled cucumber special sauce, one sesame baguette, along with one French sauce",
+    "PhotoPath": "sandwich.jpg"
+  }
+
+]
+
+
+

@@ -1,6 +1,6 @@
 using Data;
 using Model;
-using Repository;
+using Repository.Repository;
 using Repository.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +27,10 @@ builder.Services.AddSession(opt =>
 });
 builder.Services.AddScoped<IUserService, UserService>();    
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<DataAccess<User>>();
+builder.Services.AddScoped<IFoodService, FoodService>();
+builder.Services.AddScoped<IFoodRepository, FoodRepository>();
+
+builder.Services.AddScoped(typeof(DataAccess<>));
 
 var app = builder.Build();
 

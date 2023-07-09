@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository;
+namespace Repository.Repository;
 
 public class UserRepository : IUserRepository
 {
@@ -14,7 +14,7 @@ public class UserRepository : IUserRepository
 
     public UserRepository(DataAccess<User> dataAccess)
     {
-        _dataAccess = dataAccess; 
+        _dataAccess = dataAccess;
     }
     public User? GetByUsername(string username)
     {
