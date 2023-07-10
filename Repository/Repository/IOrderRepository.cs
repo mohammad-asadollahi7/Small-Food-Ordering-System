@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Data;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,7 @@ namespace Repository.Repository;
 
 public interface IOrderRepository
 {
-    public bool Create(Order newOrder);
+    List<Order> GetAll();
+    public bool Update(Order UpdatedOrder);
+    bool Create(Order newOrder);
 }

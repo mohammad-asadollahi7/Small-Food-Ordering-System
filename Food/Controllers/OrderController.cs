@@ -22,7 +22,7 @@ public class OrderController : ControllerBase
     public IActionResult Add([FromBody] Food food)
     {
         int userId = _context.HttpContext.Session.GetInt32("userId") ?? 1;
-        _orderService.Add(food, userId);
+        _orderService.CreateOrUpdate(food, userId);
         return Ok();
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Data;
 using Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Repository.Repository;
 
@@ -16,9 +12,22 @@ public class OrderRepository : IOrderRepository
     {
         _dataAccess = dataAccess;
     }
+
+    public List<Order> GetAll()
+    {
+        return _dataAccess.GetAll();
+    }
+
+    public bool Update(Order UpdatedOrder)
+    {
+        var oldOrderIndex = _dataAccess.data.FindIndex
+                             (o => o.UserId == UpdatedOrder.UserId);
+        _dataAccess.data[oldOrderIndex] = UpdatedOrder;
+        _dataAccess.SaveChanges();
+        return true;
+    }
     public bool Create(Order newOrder)
     {
-        _dataAccess.GetAll();
         if (_dataAccess.data == null)
             _dataAccess.data = new List<Order>();
         

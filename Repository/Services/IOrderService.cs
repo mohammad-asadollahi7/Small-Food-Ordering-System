@@ -9,5 +9,5 @@ namespace Repository.Services;
 
 public interface IOrderService
 {
-     bool Add(Food food, int userId);
+     bool CreateOrUpdate(Food food, int userId);
 }

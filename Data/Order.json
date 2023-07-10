@@ -1,6 +1,6 @@
 [
   {
-    "Id": "4f98365a-aca4-4607-b12f-6044622dec24",
+    "Id": "23bd96db-d574-4109-9511-0b8c76bce781",
     "UserId": 1,
     "Foods": [
       {
@@ -9,22 +9,15 @@
         "Price": 100000,
         "Description": "23 cm roast beef pizza, hot dog fries, 2 cans of Coca Cola",
         "PhotoPath": "pizza.jpg"
-      }
-    ],
-    "TotalPrice": 100000
-  },
-  {
-    "Id": "7edbba9a-180d-49f5-8023-a63e4e80a282",
-    "UserId": 2,
-    "Foods": [
+      },
       {
-        "Id": 1,
-        "Name": "Pizza",
-        "Price": 100000,
-        "Description": "23 cm roast beef pizza, hot dog fries, 2 cans of Coca Cola",
-        "PhotoPath": "pizza.jpg"
+        "Id": 3,
+        "Name": "Chicken",
+        "Price": 130000,
+        "Description": "One fried chicken thigh with special sauce, cinnamon, lavash bread",
+        "PhotoPath": "chicken.jpg"
       }
     ],
-    "TotalPrice": 100000
+    "TotalPrice": 230000
   }
 ]

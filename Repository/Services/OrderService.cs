@@ -1,10 +1,6 @@
 ﻿using Model;
 using Repository.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace Repository.Services;
@@ -20,17 +16,40 @@ public class OrderService : IOrderService
         _newOrder = newOrder;
     }
 
-    public bool Add(Food food, int userId)
+    public bool CreateOrUpdate(Food food, int userId)
+    {
+        var orders = _orderRepository.GetAll();
+        if (orders != null)
+        {
+            var order = orders.FirstOrDefault(o => o.UserId == userId);
+            if (order != null)
+            {
+                order.Foods.Add(food);
+                order.TotalPrice += food.Price;
+                return _orderRepository.Update(order);
+            }
+            else
+            {
+                var newOrder = CreateNewOrder(food, userId);
+                return _orderRepository.Create(newOrder);
+            }
+        }
+        else
+        {
+            var newOrder = CreateNewOrder(food, userId);
+            return _orderRepository.Create(newOrder);
+        }
+    }
+
+
+    private Order CreateNewOrder(Food food, int userId)
     {
         _newOrder.Id = Guid.NewGuid();
         _newOrder.UserId = userId;
-        if (_newOrder.Foods == null)
-        {
-            _newOrder.Foods = new List<Food>();
-        }
-        _newOrder.Foods.Add(food);
-        _newOrder.TotalPrice += food.Price;
-
-        return _orderRepository.Create(_newOrder);
+        var foods = new List<Food>();
+        foods.Add(food);
+        _newOrder.Foods = foods;
+        _newOrder.TotalPrice = food.Price;
+        return _newOrder;
     }
 }
