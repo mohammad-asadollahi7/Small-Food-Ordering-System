@@ -1,4 +1,5 @@
 using Data;
+using Microsoft.Net.Http.Headers;
 using Model;
 using Repository.Repository;
 using Repository.Services;
@@ -14,7 +15,7 @@ builder.Services.AddCors(opt =>
     opt.AddPolicy("mypolicy",
         policy =>
         {
-            policy.WithOrigins("*");
+            policy.WithOrigins("*").WithHeaders(HeaderNames.ContentType, "x-custom-header");
         });
 });
 

@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using Newtonsoft.Json;
 using Repository.Services;
 
 namespace FoodApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[EnableCors("mypolicy")]
 public class OrderController : ControllerBase
 {
     private readonly IOrderService _orderService;
@@ -22,7 +24,10 @@ public class OrderController : ControllerBase
     public IActionResult Add([FromBody] Food food)
     {
         int userId = _context.HttpContext.Session.GetInt32("userId") ?? 1;
-        _orderService.CreateOrUpdate(food, userId);
-        return Ok();
+        var isAdded = _orderService.CreateOrUpdate(food, userId);
+        if (isAdded)
+            return Ok();
+        else
+            return BadRequest();
     }
 }
