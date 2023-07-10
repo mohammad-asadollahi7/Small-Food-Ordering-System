@@ -22,13 +22,13 @@ public class UserController : ControllerBase
     [HttpPost]
     public IActionResult Login([FromForm] string username, [FromForm] string password)
     {
-        var isValid = _userService.IsValid(username, password);
-        if (!isValid)
+        var user = _userService.CheckUser(username, password);
+        if (user == null)
             return NotFound();
         
         else
         {
-            _context.HttpContext.Session.SetString("username", username);
+            _context.HttpContext.Session.SetInt32("userId", user.Id);
             return Ok();
         }
        

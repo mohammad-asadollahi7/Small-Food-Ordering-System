@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Model;
 using Repository.Repository;
 
 namespace Repository.Services;
@@ -14,17 +10,8 @@ public class UserService : IUserService
     {
         _userRepository = userRepository;
     }
-    public bool IsValid(string username, string password)
+    public User? CheckUser(string username, string password)
     {
-        var user = _userRepository.GetByUsername(username);
-
-        if (user == null)
-            return false;
-        
-        else if (user.Password != password)
-            return false;
-        
-        else
-            return true;
+        return _userRepository.Get(username, password);
     }
 }

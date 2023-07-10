@@ -5,11 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Services;
+namespace Repository.Repository;
 
-public interface IUserService
+public interface IOrderRepository
 {
-    public User? CheckUser(string username, string password);
-
-
+    public bool Create(Order newOrder);
 }

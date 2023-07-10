@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Services;
 
-public interface IUserService
+public interface IOrderService
 {
-    public User? CheckUser(string username, string password);
-
-
+     bool Add(Food food, int userId);
 }

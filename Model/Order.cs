@@ -8,7 +8,8 @@ namespace Model;
 
 public class Order
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public int UserId { get; set; }
-    public List<Food> Foods { get; set; }
+    public List<Food>? Foods { get; set; }
+    public int TotalPrice { get; set; }
 }

@@ -16,8 +16,9 @@ public class UserRepository : IUserRepository
     {
         _dataAccess = dataAccess;
     }
-    public User? GetByUsername(string username)
+    public User? Get(string username, string password)
     {
-        return _dataAccess.GetAll().FirstOrDefault(u => u.Username == username);
+        return _dataAccess.GetAll().FirstOrDefault(u => u.Username == username 
+                                                   && u.Password == password);
     }
 }

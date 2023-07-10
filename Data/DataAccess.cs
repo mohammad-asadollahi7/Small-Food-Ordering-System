@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Data;
@@ -10,18 +10,28 @@ namespace Data;
 public class DataAccess<T> where T : class
 {
     private string FilePath;
-    private List<T>? data;
+    public List<T>? data;
     public DataAccess()
     {
          FilePath = GetJsonFilePath();
     }
     public List<T> GetAll()
     {
+        var settings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            MissingMemberHandling = MissingMemberHandling.Ignore
+        };
         var jsonString = File.ReadAllText(FilePath);
-        data = JsonSerializer.Deserialize<List<T>>(jsonString);
+         data = JsonConvert.DeserializeObject<List<T>>(jsonString, settings);
         return data;
     }
-
+   
+    public void SaveChanges()
+    {
+       string jsonString = JsonConvert.SerializeObject(data);
+        File.WriteAllText(FilePath, jsonString);
+    }
 
     private string GetJsonFilePath()
     {
